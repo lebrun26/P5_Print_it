@@ -16,8 +16,29 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+const bannerImage = document.querySelector(".banner-img")
 const arrowLeft = document.querySelector(".arrow_left")
 const arrowRight = document.querySelector(".arrow_right")
+const dots = document.querySelectorAll("dot")
+
+let indexTab = 0
+
+//Mise à jour du bullet point
+function bulletUpdate (index){
+}
+
+function carousselUpdate (index, direction){
+	
+
+	// Mise à jour de l'image
+	const image = `assets/images/slideshow/${slides[indexTab].image}`
+	bannerImage.src = image
+	bannerImage.alt = `Slide${indexTab + 1}`
+
+	//Mettre à jour le text de chaque photo
+	const tagLine = slides[indexTab.tagLine]
+	document.querySelector("p").innerHTML = tagLine
+}
 
 // Evenement de la fleche gauche
 
@@ -28,5 +49,5 @@ arrowLeft.addEventListener("click", () => {
 // Evenement de la fleche droite
 
 arrowRight.addEventListener("click", () => {
-	console.log("Vous avez cliqué sur la fleche de gauche")
+	console.log("Vous avez cliqué sur la fleche de droite")
 })
