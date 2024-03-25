@@ -37,6 +37,13 @@ function bulletUpdate (index){
 
 function carousselUpdate (index, direction){
 	
+	if (indexTab < 0){
+		indexTab = 3
+	}
+	else if (indexTab > slides.length - 1){
+		indexTab = 0
+	}
+
 	// Mise à jour de l'image
 	const image = `assets/images/slideshow/${slides[indexTab].image}`
 	bannerImage.src = image
@@ -55,7 +62,6 @@ arrowLeft.addEventListener("click", () => {
 	console.log(indexTab)
 	carousselUpdate(indexTab)
 	bulletUpdate(indexTab)
-	console.log(bulletUpdate(indexTab))
 })
 
 // Evenement de la fleche droite
@@ -66,5 +72,4 @@ arrowRight.addEventListener("click", () => {
 	console.log(indexTab)
 	carousselUpdate(indexTab)
 	bulletUpdate(indexTab)
-	console.log(bulletUpdate(indexTab))
 })
