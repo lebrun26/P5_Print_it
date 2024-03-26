@@ -23,6 +23,22 @@ const dots = document.querySelectorAll(".dot")
 
 let indexTab = 0
 
+// Creation de dot pour le nombre d'image (en construction // Teste)
+function dotsUpdate (indexdot){
+	dots.forEach((dots, indexdot) => {
+		if(dots != dots.length){
+			let div = 	`
+						<div class="dot"></div>
+						`
+			dots.innerHTML = div
+			
+		}
+		else{
+
+		}
+	})
+}
+
 // Mise à jour du bullet point
 function bulletUpdate (index){
 	dots.forEach((dot, i) => {
@@ -59,7 +75,6 @@ function carousselUpdate (index, direction){
 arrowLeft.addEventListener("click", () => {
 	console.log("Vous avez cliqué sur la fleche de gauche")
 	indexTab = (indexTab - 1)
-	console.log(indexTab)
 	carousselUpdate(indexTab)
 	bulletUpdate(indexTab)
 })
@@ -69,7 +84,6 @@ arrowLeft.addEventListener("click", () => {
 arrowRight.addEventListener("click", () => {
 	console.log("Vous avez cliqué sur la fleche de droite")
 	indexTab = (indexTab + 1)
-	console.log(indexTab)
 	carousselUpdate(indexTab)
 	bulletUpdate(indexTab)
 })
