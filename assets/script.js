@@ -16,6 +16,8 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+
 const bannerImage = document.querySelector(".banner-img")
 const arrowLeft = document.querySelector(".arrow_left")
 const arrowRight = document.querySelector(".arrow_right")
@@ -23,33 +25,23 @@ const dots = document.querySelectorAll(".dot")
 
 let indexTab = 0
 
-// Creation de dot pour le nombre d'image (en construction // Teste)
-function dotsUpdate (indexdot){
-	dots.forEach((dots, indexdot) => {
-		if(dots != dots.length){
-			let div = 	`
-						<div class="dot"></div>
-						`
-			dots.innerHTML = div
-			
-		}
-		else{
+// Creation de dot pour le nombre d'image + mise a jour de la bullet
+function dotUpdate() {
+    const dotsContainer = document.querySelector('.dots');
+    dotsContainer.innerHTML = ''; // Clear previous dots
 
-		}
-	})
-}
-
-// Mise à jour du bullet point
-function bulletUpdate (index){
-	dots.forEach((dot, i) => {
-		if (i === index){
+    for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add("dot");
+		if (i === indexTab){
 			dot.classList.add("dot_selected")
-		} 
-		else {
-			dot.classList.remove("dot_selected")
 		}
-	})
+        dotsContainer.appendChild(dot);
+    }
 }
+dotUpdate();
+
+
 
 function carousselUpdate (index, direction){
 	
@@ -76,7 +68,7 @@ arrowLeft.addEventListener("click", () => {
 	console.log("Vous avez cliqué sur la fleche de gauche")
 	indexTab = (indexTab - 1)
 	carousselUpdate(indexTab)
-	bulletUpdate(indexTab)
+	dotUpdate(indexTab)
 })
 
 // Evenement de la fleche droite
@@ -85,5 +77,5 @@ arrowRight.addEventListener("click", () => {
 	console.log("Vous avez cliqué sur la fleche de droite")
 	indexTab = (indexTab + 1)
 	carousselUpdate(indexTab)
-	bulletUpdate(indexTab)
+	dotUpdate(indexTab)
 })
